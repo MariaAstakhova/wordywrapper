@@ -1,6 +1,17 @@
 require "wordywrapper/version"
 
 module Wordywrapper
-  class Error < StandardError; end
-  # Your code goes here...
+    def self.wrap(string, column)
+        return "" if string.nil? || string.empty?
+        space_index = string[0...column].index(" ") || column
+        wrapped = string[0...space_index] + "\n"
+        remainder = string[space_index..-1]
+
+        unless remainder.nil?
+            remainder = remainder.strip 
+        end 
+
+        (wrapped + wrap(remainder, column)).strip
+
+    end
 end
