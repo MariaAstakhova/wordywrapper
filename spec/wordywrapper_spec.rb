@@ -23,4 +23,9 @@ it "break early if space before column" do
     expect(Wordywrapper.wrap("longer word", 9)).to eq("longer\nword")
     expect(Wordywrapper.wrap("long long long word", 6)).to eq("long\nlong\nlong\nword")
 end 
+
+it "should return word if shorter than column when there is a space" do
+  expect(Wordywrapper.wrap("word word", 12)).to eq("word word")
+end
+
 end
